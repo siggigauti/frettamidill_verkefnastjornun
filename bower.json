@@ -1,0 +1,17 @@
+{
+  "name": "frettamidill_verkefnastjornun",
+  "description": "",
+  "main": "",
+  "authors": [
+    "siggigauti <siggigauti@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
