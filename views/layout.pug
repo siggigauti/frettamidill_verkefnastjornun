@@ -1,4 +1,4 @@
-- var tmp=[["Forsíða", "/"], ["Group 2", "#"], ["Group 3", "#"]];
+- var groups=[{text: "Forsíða", url: "/"}, {text: "Group 2", url: "#"}, {text: "Group 3", url: "#"}];
 doctype html
 html
   head
@@ -14,10 +14,10 @@ html
       nav(class="navbar navbar-default")
         .container-fluid
           ul(class="nav navbar-nav")
-            - for (var i=0; i<tmp.length; i++)
+            - for (var i=0; i<groups.length; i++)
                 li.nav-item
-                  a.nav-link(href=tmp[i][1])
-                    =tmp[i][0]
+                  a.nav-link(href=groups[i].url)
+                    =groups[i].text
           ul(class="nav navbar-nav navbar-right")
             li.nav-item
               a.nav-link(href="#")

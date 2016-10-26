@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .row
+    .col-md-12
+      h2 Skrifa frétt
+      .form-group
+        .row(style="margin-bottom: 2rem;")
+          - for (var i=0; i<groups.length; i++)
+              label.checkbox-inline
+                input(type="checkbox", value=groups[i].text)
+                = groups[i].text
+        .row(style="margin-bottom: 2rem;")
+          label(for="imgsrc") Url á mynd:
+          input.form-control#imgsrc(type="text")
+        .row(style="margin-bottom: 2rem;")
+          label(for="textarea") Frétt:
+          textarea.form-control#textarea(rows="10")
+        .row
+          button.btn.btn-primary(type="submit") Vista
