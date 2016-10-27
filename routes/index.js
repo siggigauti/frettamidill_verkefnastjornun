@@ -7,11 +7,15 @@ router.get('/frett', frettPage);
 router.get('/skrifa', skrifaPage);
 router.get('/user', userPage);
 router.get('/admin', adminPage);
+router.get('/login', login);
 
 //Hérna er fall, það renderar jade skjalið 'index' undir möppunni views og er með json gögn, með eina breytu title sem inniheldur "Express".
 //sbr. hvernig jade tekur json gögnin og notar þau í templating.
 function homePage(req, res, next) {
   res.render('index', { title: 'Express' });
+};
+function login(req,res,next){
+  res.render('login',{title: 'Login'});
 };
 
 //imgsrc er optional
