@@ -8,8 +8,8 @@ block content
           h3.pull-left= title
           h4.pull-left(style="margin: 23px 0 0 5px;")= " - " + dags
           div(class="pull-right", style="margin-top: 25px;")
-            - for (var i=0; i<groups.length; i++)
-                a(href=groups[i].url, style="padding-right: 20px;")= groups[i].text
+            - for (var i=0; i<frettgroups.length; i++)
+                a(href=frettgroups[i].url, style="padding-right: 20px;")= frettgroups[i].text
         - if (imgsrc)
           img.pull-left(src= imgsrc)
         p= texti

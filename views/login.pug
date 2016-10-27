@@ -1,8 +1,9 @@
 extends layout
 block content
-	.login
-		h1 Login
-		form(method='post')
-			input(type='text', name='username', placeholder='Username', required='requird')
-			input(type='password', name='password', placeholder='Password', required='required')
-			button.btn.btn-primary.btn-block.btn-small(type='submit') Log in
+	.row(style="margin-bottom: 10rem;")
+		.login
+			h1 Login
+			form.col-md-offset-4.col-md-4(method='post')
+				input(type='text', name='username', placeholder='Username', required='requird')
+				input(type='password', name='password', placeholder='Password', required='required')
+				button.btn.btn-primary.btn-block.btn-small(type='submit') Log in
