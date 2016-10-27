@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .row
+    .col-md-offset-1.col-md-10
+      ul.list-unstyled
+        - if (frettir)
+          - for (var i=0; i<frettir.length; i++)
+            li
+              button.btn.btn-link(type="button" id=frettir[i].url, title="Henda frétt")
+                span.glyphicon.glyphicon-remove-circle(style="color:red; font-size: 20px")
+              a(href=frettir[i].url)
+                =frettir[i].title

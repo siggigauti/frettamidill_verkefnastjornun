@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .row
+    .col-md-offset-1.col-md-4.col-md-offset-1
+      form
+        .form-group
+          .row(style="margin-bottom: 2rem;")
+            input.form-control#displayName(type="text", placeholder="Display name")
+          .row(style="margin-bottom: 2rem;")
+            input.form-control#password(type="password", placeholder="Password")
+          .row(style="margin-bottom: 2rem;")
+            input.form-control#email(type="email", placeholder="Email")
+          .row(style="margin-bottom: 2rem;")
+            button.btn.btn-primary.pull-right(type="submit") Save
+    .col-md-offset-1.col-md-4.col-md-offset-1
+      - if (posts)
+        - for (var i=0; i<posts.length; i++)
+          .row(style="margin-bottom: 0.5rem;")
+            a(href=posts[i].url)= posts[i].title
