@@ -1,0 +1,319 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5beta1
+-- Dumped by pg_dump version 9.5beta1
+
+-- Started on 2016-11-07 17:51:07
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2140 (class 1262 OID 12373)
+-- Dependencies: 2139
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- TOC entry 190 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2143 (class 0 OID 0)
+-- Dependencies: 190
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- TOC entry 189 (class 3079 OID 16384)
+-- Name: adminpack; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2144 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: EXTENSION adminpack; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 187 (class 1259 OID 32829)
+-- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: defaultuser
+--
+
+CREATE SEQUENCE hibernate_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hibernate_sequence OWNER TO defaultuser;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 188 (class 1259 OID 32848)
+-- Name: hits_counter; Type: TABLE; Schema: public; Owner: defaultuser
+--
+
+CREATE TABLE hits_counter (
+    id bigint NOT NULL,
+    counter integer NOT NULL
+);
+
+
+ALTER TABLE hits_counter OWNER TO defaultuser;
+
+--
+-- TOC entry 181 (class 1259 OID 16426)
+-- Name: postitnote; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE postitnote (
+    id bigint NOT NULL,
+    name character varying(255),
+    note character varying(255)
+);
+
+
+ALTER TABLE postitnote OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 16424)
+-- Name: postitnote_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE postitnote_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE postitnote_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2145 (class 0 OID 0)
+-- Dependencies: 180
+-- Name: postitnote_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE postitnote_id_seq OWNED BY postitnote.id;
+
+
+--
+-- TOC entry 185 (class 1259 OID 24706)
+-- Name: recipes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE recipes (
+    id bigint NOT NULL,
+    image character varying(255),
+    ingredients character varying(255),
+    instructions character varying(255),
+    recipe_group character varying(255),
+    recipe_name character varying(255),
+    username character varying(255),
+    counter integer
+);
+
+
+ALTER TABLE recipes OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 24704)
+-- Name: recipes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE recipes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE recipes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2146 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: recipes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE recipes_id_seq OWNED BY recipes.id;
+
+
+--
+-- TOC entry 183 (class 1259 OID 24695)
+-- Name: user_information; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE user_information (
+    id bigint NOT NULL,
+    create_date timestamp without time zone,
+    email character varying(255),
+    name character varying(255),
+    password character varying(255),
+    user_name character varying(255),
+    password_confirm character varying(255),
+    enabled bigint DEFAULT '1'::bigint
+);
+
+
+ALTER TABLE user_information OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 24693)
+-- Name: user_information_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE user_information_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_information_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2147 (class 0 OID 0)
+-- Dependencies: 182
+-- Name: user_information_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE user_information_id_seq OWNED BY user_information.id;
+
+
+--
+-- TOC entry 186 (class 1259 OID 32824)
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: defaultuser
+--
+
+CREATE TABLE user_roles (
+    user_role_id bigint NOT NULL,
+    role character varying(255),
+    userid bigint
+);
+
+
+ALTER TABLE user_roles OWNER TO defaultuser;
+
+--
+-- TOC entry 2007 (class 2604 OID 16429)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY postitnote ALTER COLUMN id SET DEFAULT nextval('postitnote_id_seq'::regclass);
+
+
+--
+-- TOC entry 2010 (class 2604 OID 24709)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY recipes ALTER COLUMN id SET DEFAULT nextval('recipes_id_seq'::regclass);
+
+
+--
+-- TOC entry 2008 (class 2604 OID 24698)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY user_information ALTER COLUMN id SET DEFAULT nextval('user_information_id_seq'::regclass);
+
+
+--
+-- TOC entry 2020 (class 2606 OID 32852)
+-- Name: hits_counter_pkey; Type: CONSTRAINT; Schema: public; Owner: defaultuser
+--
+
+ALTER TABLE ONLY hits_counter
+    ADD CONSTRAINT hits_counter_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2012 (class 2606 OID 16434)
+-- Name: postitnote_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY postitnote
+    ADD CONSTRAINT postitnote_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2016 (class 2606 OID 24714)
+-- Name: recipes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY recipes
+    ADD CONSTRAINT recipes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2014 (class 2606 OID 24703)
+-- Name: user_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY user_information
+    ADD CONSTRAINT user_information_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2018 (class 2606 OID 32828)
+-- Name: user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: defaultuser
+--
+
+ALTER TABLE ONLY user_roles
+    ADD CONSTRAINT user_roles_pkey PRIMARY KEY (user_role_id);
+
+
+--
+-- TOC entry 2142 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-11-07 17:51:08
+
+--
+-- PostgreSQL database dump complete
+--
+
