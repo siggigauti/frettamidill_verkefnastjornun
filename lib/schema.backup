@@ -90,7 +90,8 @@ CREATE TABLE "Users" (
     username text,
     password text,
     email text,
-    id integer NOT NULL
+    id integer NOT NULL,
+    salt integer NOT NULL
 );
 
 
