@@ -4,6 +4,13 @@ block content
 		.login
 			h1 Login
 			form.col-md-offset-4.col-md-4(method='post')
+				if post
+					if !success
+						p Villa við innskráningu
+						if !exists
+							p Notandi ekki til.
+						if wrongPass
+							p Rangt lykilorð
 				input(type='text', name='username', placeholder='Username', required='requird')
 				input(type='password', name='password', placeholder='Password', required='required')
 				button.btn.btn-primary.btn-block.btn-small(type='submit') Log in

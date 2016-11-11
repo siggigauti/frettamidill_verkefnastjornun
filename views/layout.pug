@@ -1,4 +1,4 @@
-- var groups=[{text: "Forsíða", url: "/"}, {text: "Group 2", url: "#"}, {text: "Group 3", url: "#"}];
+- var groups=[{text: "Forsíða", url: "/"}, {text: 'Sigup', url: "/signup"}, {text: "Group 2", url: "#"}, {text: "Group 3", url: "#"}];
 doctype html
 html
   head
@@ -9,7 +9,7 @@ html
     header
       .row
         a(href="#", class="pull-left")
-          img(src="banner.png")
+          
         h2 Veffréttamiðill
       nav(class="navbar navbar-default")
         .container-fluid
@@ -20,7 +20,7 @@ html
                     =groups[i].text
           ul(class="nav navbar-nav navbar-right")
             li.nav-item
-              a.nav-link(href="#")
+              a.nav-link(href="/login")
                 span(class="glyphicon glyphicon-log-in" style="padding-right:5px;")
                 | Login
 
@@ -50,11 +50,11 @@ html
             div.text-center Social media
               div(class="row", style="margin-bottom: 5px;")
                 a(href="#", style="margin-right: 5px;")
-                  img(src="facebook-icon.png")
+                  
                 a(href="#")
-                  img(src="twitter-icon.png")
+                  
               div(class="row")
                 a(href="#", style="margin-right: 5px;")
-                  img(src="youtube-icon.png")
+                  
                 a(href="#")
                   img(src="#")
