@@ -1,5 +1,78 @@
 extends layout
+
 block content
-  each item in items
-    p= item.headline
-    p= item.id
+  .row
+    .col-md-9
+      .row(style="margin-bottom: 5rem;")
+        .col-md-12
+          .thumbnail
+            a(href=" frettir[0].id")
+              h3= frettir[0].headline
+            p= frettir[0].content
+            img.center-block(src= frettir[0].photo)
+            div
+                a(href='#', style="padding-right: 20px;")= frettir[0].article_group
+      .row
+        .col-md-12
+          div.text-center(style="min-height:100px;")
+            a(href="#Auglýsing")
+              img(src= "/img/banner.png")
+      .row(style="margin-bottom: 5rem;")
+        .col-md-6
+          .thumbnail
+            a(href= frettir[1].id)
+              h3= frettir[1].headline
+            p= frettir[1].content.substring(0,200)
+            img.center-block(src= frettir[1].photo)
+            div
+                a(href='#', style="padding-right: 20px;")= frettir[1].article_group
+        .col-md-6
+          .thumbnail
+            a(href= frettir[2].id)
+              h3= frettir[2].headline
+            p= frettir[2].content.substring(0,200)
+            img.center-block(src= frettir[2].photo)
+            div
+                a(href='#', style="padding-right: 20px;")= frettir[2].article_group
+      .row
+        .col-md-12
+          div.text-center(style="min-height:100px;")
+            a(href="#Auglýsing")
+              img(src= "/img/banner.png")
+      .row(style="margin-bottom: 5rem;")
+        .col-md-6
+          .thumbnail
+            a(href= frettir[3].id)
+              h3= frettir[3].headline
+            p= frettir[3].content.substring(0,200)
+            img.center-block(src= frettir[3].photo)
+            div
+                a(href='#', style="padding-right: 20px;")= frettir[3].article_group
+        .col-md-6
+          .thumbnail
+            a(href= frettir[4].id)
+              h3= frettir[4].headline
+            p= frettir[4].content.substring(0,200)
+            img.center-block(src= frettir[4].photo)
+            div
+                a(href='#', style="padding-right: 20px;")= frettir[4].article_group
+      .row
+        .col-md-12
+          div.text-center(style="min-height:100px;")
+            a(href="#Auglýsing")
+              img(src= "/img/banner.png")
+      .row(style="margin-bottom: 5rem;")
+        .col-md-12
+          .thumbnail
+            ul.list-unstyled
+              - for (var i=5; i<frettir.length; i++)
+                li
+                  a(href= frettir[i].id)
+                    h4= frettir[i].headline
+      .row
+        .col-md-12
+          div.text-center(style="min-height:100px;")
+            a(href="#Auglýsing")
+              img(src= "/img/banner.png")
+    .col-md-3
+        p Auslýsingapláss

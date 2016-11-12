@@ -17,7 +17,7 @@ function homePage(req, res, next) {
   console.log("getting articles...");
   article.getArticles(7, function (err, result) {
     var data = {
-      items: result.rows
+      frettir: result.rows
     };
     res.render('index', data);
   });

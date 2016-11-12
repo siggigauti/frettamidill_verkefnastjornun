@@ -9,11 +9,13 @@
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "dotevn": "~2.0.0",
     "express": "^4.13.4",
     "express-session": "^1.14.1",
     "gulp": "^3.9.1",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
+    "pg": "^6.1.0",
     "pug": "^2.0.0-beta6",
     "serve-favicon": "~2.3.0"
   },
