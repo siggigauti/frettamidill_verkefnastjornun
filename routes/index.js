@@ -7,6 +7,7 @@ var ensureLoggedIn = require('../middleware/ensureLoggedIn');
 router.get('/', homePage);
 router.get('/frett/:id', frettPage);
 router.get('/newArticle', ensureLoggedIn, newArticleForm);
+router.get('/:article_group', groupPage);
 //router.get('/user', userPage);
 //router.get('/admin', adminPage);
 
@@ -23,6 +24,15 @@ function homePage(req, res, next) {
   });
 };
 
+function groupPage(req, res, next) {
+  article.getArticleByGroup(req.params.article_group, 16, function(err, result) {
+    var data = {
+      title: req.params.article_group,
+      frettir: result.rows
+    };
+    res.render('index', data);
+  });
+};
 
 //imgsrc er optional
 //undirfrett1-3 eru optional
