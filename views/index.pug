@@ -6,7 +6,7 @@ block content
       .row(style="margin-bottom: 5rem;")
         .col-md-12
           .thumbnail
-            a(href=" frettir[0].id")
+            a(href= "/frett/"+frettir[0].id)
               h3= frettir[0].headline
             p= frettir[0].content
             img.center-block(src= frettir[0].photo)
@@ -22,7 +22,7 @@ block content
             -if(frettir.length > 1)
               .col-md-6
                 .thumbnail
-                  a(href= frettir[1].id)
+                  a(href= "/frett/"+frettir[1].id)
                     h3= frettir[1].headline
                   p= frettir[1].content.substring(0,200)
                   img.center-block(src= frettir[1].photo)
@@ -31,7 +31,7 @@ block content
             -if(frettir.length > 2)
               .col-md-6
                 .thumbnail
-                  a(href= frettir[2].id)
+                  a(href= "/frett/"+frettir[2].id)
                     h3= frettir[2].headline
                   p= frettir[2].content.substring(0,200)
                   img.center-block(src= frettir[2].photo)
@@ -46,7 +46,7 @@ block content
         -if(frettir.length > 3)
           .col-md-6
             .thumbnail
-              a(href= frettir[3].id)
+              a(href= "/frett/"+frettir[3].id)
                 h3= frettir[3].headline
               p= frettir[3].content.substring(0,200)
               img.center-block(src= frettir[3].photo)
@@ -55,7 +55,7 @@ block content
         -if(frettir.length > 4)
           .col-md-6
             .thumbnail
-              a(href= frettir[4].id)
+              a(href= "/frett/"+frettir[4].id)
                 h3= frettir[4].headline
               p= frettir[4].content.substring(0,200)
               img.center-block(src= frettir[4].photo)
@@ -73,7 +73,7 @@ block content
               ul.list-unstyled
                 - for (var i=5; i<frettir.length; i++)
                   li
-                    a(href= frettir[i].id)
+                    a(href= "/frett/"+frettir[i].id)
                       h4= frettir[i].headline
       .row
         .col-md-12

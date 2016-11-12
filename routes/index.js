@@ -7,7 +7,7 @@ var ensureLoggedIn = require('../middleware/ensureLoggedIn');
 router.get('/', homePage);
 router.get('/frett/:id', frettPage);
 router.get('/newArticle', ensureLoggedIn, newArticleForm);
-router.get('/:article_group', groupPage);
+router.get('/groups/:article_group', groupPage);
 //router.get('/user', userPage);
 //router.get('/admin', adminPage);
 
