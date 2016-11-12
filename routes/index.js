@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var article = require('../lib/articles');
+var ensureLoggedIn = require('../middleware/ensureLoggedIn');
 
 //Hérna er fyrsta route, þegar það er sótt '/' þá köllum við á fallið homePage
 router.get('/', homePage);
 router.get('/frett/:id', frettPage);
-router.get('/skrifa', skrifaPage);
-router.get('/user', userPage);
-router.get('/admin', adminPage);
+router.get('/newArticle', ensureLoggedIn, newArticleForm);
+//router.get('/user', userPage);
+//router.get('/admin', adminPage);
 
 
 //Hérna er fall, það renderar pug skjalið 'index' undir möppunni views og er með json gögn, með eina breytu title sem inniheldur "Express".
@@ -36,9 +37,12 @@ function frettPage(req, res, next) {
   });
 };
 
-function skrifaPage(req, res, next) {
-  res.render('skrifa', { title: "Hér skrifar maður nýja fréttir"
-  });
+function newArticleForm(req, res, next) {
+  var data = {
+    user: req.session.user.username,
+    currURL: '/newStory'
+  }
+  res.render('skrifa', data);
 };
 
 //posts er optional
