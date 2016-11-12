@@ -1,4 +1,45 @@
 extends layout
+
 block content
-  each item in items
-    p= item.headline
+  body
+    .row
+      .col-md-12
+        .row
+          h3.pull-left= frett[0].headline
+          h4.pull-left(style="margin: 23px 0 0 5px;")= " - " + frett[0].date
+          div(class="pull-right", style="margin-top: 25px;")
+              a(href= "/groups/"+frett[0].article_group, style="padding-right: 20px;")= frett[0].article_group
+        - if (frett[0].photo)
+          img.pull-left(src= frett[0].photo)
+        p= frett[0].content
+        p= frett[0].user
+    .row
+      .col-md-12
+        div.text-center(style="min-height:100px;")
+          a(href="#Auglýsing")
+            img(src= "/img/banner.png")
+    .row
+      - if (undirfrett1)
+        .col-md-4
+          a(href= undirfrett1.url)
+            .thumbnail
+              - if (undirfrett1.imgsrc)
+                img(src= undirfrett1.imgsrc)
+              .caption
+                h4= undirfrett1.title
+      - if (undirfrett2)
+        .col-md-4
+          a(href= undirfrett2.url)
+            .thumbnail
+              - if (undirfrett2.imgsrc)
+                img(src= undirfrett2.imgsrc)
+              .caption
+                h4= undirfrett2.title
+      - if (undirfrett3)
+        .col-md-4
+          a(href= undirfrett3.url)
+            .thumbnail
+              - if (undirfrett3.imgsrc)
+                img(src= undirfrett3.imgsrc)
+              .caption
+                h4= undirfrett3.title

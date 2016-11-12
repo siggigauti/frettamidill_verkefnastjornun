@@ -6,8 +6,9 @@ var ensureLoggedIn = require('../middleware/ensureLoggedIn');
 //Hérna er fyrsta route, þegar það er sótt '/' þá köllum við á fallið homePage
 router.get('/', homePage);
 router.get('/frett/:id', frettPage);
-router.get('/newArticle', ensureLoggedIn, newArticleForm);
 router.get('/groups/:article_group', groupPage);
+router.get('/skrifa', ensureLoggedIn, skrifaPage);
+router.post('/skrifa', ensureLoggedIn, skrifaHandler);
 //router.get('/user', userPage);
 //router.get('/admin', adminPage);
 
@@ -17,18 +18,55 @@ router.get('/groups/:article_group', groupPage);
 function homePage(req, res, next) {
   console.log("getting articles...");
   article.getArticles(7, function (err, result) {
+    var user;
+    if(req.session.user){
+      user = req.session.user; 
+    }
     var data = {
-      frettir: result.rows
+      frettir: result.rows,
+      user: user
     };
     res.render('index', data);
   });
 };
 
+function skrifaPage(req, res, next){
+  var user;
+  if(req.session.user){
+    user = req.session.user; 
+  }
+  var data = {
+    user: user
+  }
+  res.render('skrifa', data);
+};
+
+function skrifaHandler(req, res, next){
+  var headline = req.body.headline;
+  var content = req.body.content;
+  var article_group = req.body.article_group;
+  var user = req.session.user.username;
+  console.log(user);  
+  var photo = req.body.photo;
+  article.createArticle(user, headline, content, article_group, photo, function(err, result){
+    article.getArticleByUser(1, user, function(err, result){
+      console.log(result);
+      var redirPath = result.rows[0].id;
+      res.redirect('/frett/'+redirPath);
+    });
+  });
+};
+
 function groupPage(req, res, next) {
   article.getArticleByGroup(req.params.article_group, 16, function(err, result) {
+    var user;
+    if(req.session.user){
+      user = req.session.user; 
+    }
     var data = {
       title: req.params.article_group,
-      frettir: result.rows
+      frettir: result.rows,
+      user: user
     };
     res.render('index', data);
   });
@@ -40,20 +78,18 @@ function groupPage(req, res, next) {
 function frettPage(req, res, next) {
   
   article.getArticleByID(parseInt(req.params.id), function(err, result) {
+    var user;
+    if(req.session.user){
+      user = req.session.user; 
+    }
     var data = {
-      items: result.rows
+      frett: result.rows,
+      user: user
     };
     res.render('frett', data);
   });
 };
 
-function newArticleForm(req, res, next) {
-  var data = {
-    user: req.session.user.username,
-    currURL: '/newStory'
-  }
-  res.render('skrifa', data);
-};
 
 //posts er optional
 function userPage(req, res, next) {

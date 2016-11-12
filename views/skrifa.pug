@@ -4,18 +4,21 @@ block content
   .row
     .col-md-12
       h2 Skrifa frétt
-      form
+      form(method="post")
         .form-group
           .row(style="margin-bottom: 2rem;")
-            - for (var i=0; i<groups.length; i++)
+            - for (var i=2; i<groups.length; i++)
                 label.checkbox-inline
-                  input(type="checkbox", value=groups[i].text)
+                  input(type="radio", name="article_group", id="article_group", value=groups[i].text)
                   = groups[i].text
           .row(style="margin-bottom: 2rem;")
-            label(for="imgsrc") Url á mynd:
-            input.form-control#imgsrc(type="text")
+            label(for="photo") Url á mynd:
+            input.form-control#photo(type="text", name="photo")
           .row(style="margin-bottom: 2rem;")
-            label(for="textarea") Frétt:
-            textarea.form-control#textarea(rows="10")
+            label(for="headline") Headline:
+            input.form-control#headline(type="text", name="headline")
+          .row(style="margin-bottom: 2rem;")
+            label(for="content") Frétt:
+            textarea.form-control#content(rows="10", name="content")
           .row
             button.btn.btn-primary(type="submit") Vista

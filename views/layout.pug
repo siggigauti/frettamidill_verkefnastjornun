@@ -19,10 +19,16 @@ html
                   a.nav-link(href=groups[i].url)
                     =groups[i].text
           ul(class="nav navbar-nav navbar-right")
-            li.nav-item
-              a.nav-link(href="/login")
-                span(class="glyphicon glyphicon-log-in" style="padding-right:5px;")
-                | Login
+            -if(!user)
+              li.nav-item
+                a.nav-link(href="/login")
+                  span(class="glyphicon glyphicon-log-in" style="padding-right:5px;")
+                  | Login
+            -if(user)
+              li.nav-item
+                a.nav-link(href="/skrifa")
+                  span(class="glyphicon glyphicon-log-in" style="padding-right:5px;")
+                  | Skrifa Frétt
 
     block content
 
