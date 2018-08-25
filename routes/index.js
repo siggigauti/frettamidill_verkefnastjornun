@@ -98,7 +98,7 @@ function userPage(req, res, next) {
   if(req.session.user){
     user = req.session.user; 
   }
-  article.getArticleByUser(20, user.username, function(err, result){
+  article.getArticleByUser(20, user.display_name, function(err, result){
     var data = {
       title: "Notendasíða",
       frettir: result.rows,
